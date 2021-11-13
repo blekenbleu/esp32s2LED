@@ -1,7 +1,6 @@
-## esp32s2LED.h - a wrapper for Freenove_WS2812_Lib_for_ESP32.h
-A number of ESP32 modules have a WS2812 instead of an LED,  
-which breaks many Arduino sketches.  
-`esp32s2LED.h` provides a relatively painless way to patch those sketches:
+## esp32s2LED.h - a wrapper for [Freenove_WS2812_Lib_for_ESP32](../Freenove_WS2812_Lib_for_ESP32).h
+A number of ESP32 modules have a WS2812 instead of an LED, breaking many Arduino sketches.  
+`esp32s2LED.h` provides a relatively simple way to patch those sketches:
 ```
 #include "esp32s2LED.h"
  
