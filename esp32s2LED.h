@@ -1,5 +1,6 @@
 // a wrapper for Freenove_WS2812_Lib_for_ESP32.h
 #include "Freenove_WS2812_Lib_for_ESP32.h"
+#define USBCON 1		// for MIDIUSB
 
 /* typical usage
  ; #include "esp32s2LED.h
