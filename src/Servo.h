@@ -1,27 +1,40 @@
 #ifndef Servo_h
 #define Servo_h
 
-#define TIMER_INTERRUPT_DEBUG       0
-#define ISR_SERVO_DEBUG             1
-
-// Select different ESP32 timer number (0-3) to avoid conflict
-#define USE_ESP32_TIMER_NO          3
-
-#include "ESP32_S2_ISR_Servo.h"		// declares `extern ESP32_ISR_Servo ESP32_ISR_Servos;` to control up to 16 servos
+#include <inttypes.h>
 
 class Servo
 {
+  int8_t pin;
+
 public:
+#define MIN_ANGLE		0
+#define MAX_ANGLE		180
+#define NOT_ATTACHED		(-1)
+
   Servo();
-  uint8_t attach(int pin);           // attach pin to the next free channel, sets pinMode, returns channel number or 0 if failure
-  uint8_t attach(int pin, int min, int max); // as above but also sets min and max values for writes.
+
+  // attach pin to the next free channel, returns channel number or 0 if failure
+  uint8_t attach(uint8_t pin, uint16_t min, uint16_t max, int16_t minAngle, int16_t maxAngle);
+  uint8_t attach(uint8_t pin, uint16_t min, uint16_t max);
+  uint8_t attach(uint8_t pin);
+  bool attached() const { return this->pin != NOT_ATTACHED; }
   void detach();
-  void write(int value); 
-  int read();                        // returns current pulse width
+
+  void write(int value);
+  void writeMicroseconds(uint16_t pulseWidth);
+  uint16_t readMicroseconds();
+  int read();				// returns current pulse width
+
 private:
-   uint8_t servoIndex;               // index into the channel data for this servo
-   int8_t min;                       // minimum is this value times 4 added to MIN_PULSE_WIDTH
-   int8_t max;                       // maximum is this value times 4 added to MAX_PULSE_WIDTH
+
+   uint8_t servoIndex;			// channel for this servo
+   int16_t minAngle;
+   int16_t maxAngle;
+   uint16_t minPW;
+   uint16_t maxPW;
+
+   void resetFields(void);
 };
 
 // Map Arduino pins to available ESP32-S2 PWM pins
@@ -44,6 +57,5 @@ private:
 #define PA2  37
 #define PA1  38
 #define PA15 45
-
 
 #endif
