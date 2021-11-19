@@ -20,5 +20,7 @@ void loop() {
   ESP32_LED(0, 255, 0);  // green
 }
 ```  
-With this library, existing sketches with `#include "Servo.h"` should work as intended on ESP32-S2 boards.
+With this library, existing sketches with `#include "Servo.h"` should work as intended on ESP32-S2 boards.  
+See also [Arduino and ESP32-S2-Saola-1](https://blekenbleu.github.io/ESP32)
+and its [libraries descriptions](https://blekenbleu.github.io/ESP32/libraries)  
 
