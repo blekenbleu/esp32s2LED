@@ -26,15 +26,12 @@
 #define CREATE_ESP32_WS2812_INSTANCE() Freenove_ESP32_WS2812 ws2812 \
         = Freenove_ESP32_WS2812(1, WS2812_PIN, 0, TYPE_GRB)
 
+// only 255 brightness levels; setBrightness < 255 limits brightness and real granularity
 #define ESP32_WS2812_SETUP(val) ({ \
         ws2812.begin(); \
-        ws2812.setBrightness(10); \
+        ws2812.setBrightness(255); \
         ESP32_RED(val); })
 
-#define ESP32_RED(val) ({ \
-        ws2812.setLedColorData(0, val, 0, 0); \
-        ws2812.show(); })
+#define ESP32_RED(val) ws2812.setLedColor(0, val, 0, 0)
 
-#define ESP32_LED(r, g, b) ({ \
-        ws2812.setLedColorData(0, r, g, b); \
-        ws2812.show(); })
+#define ESP32_LED(r, g, b) ws2812.setLedColor(0, r, g, b)
