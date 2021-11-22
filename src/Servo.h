@@ -50,12 +50,12 @@ private:
 #define PA9  13
 #define PA8  14
 #define PB1  21
-#define PB0  33
-#define PA7  34
+#define PB0  33 // <- level converted
+#define PA7  34 // <- level converted
 #define PA6  35
 #define PA3  36
-#define PA2  37
-#define PA1  38
+#define PA2  37 // <- level converted
+#define PA1  38 // <- level converted
 #define PA15 45
 
 #endif
