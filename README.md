@@ -1,4 +1,6 @@
 ## esp32s2LED.h - a wrapper for [Freenove_WS2812_Lib_for_ESP32](../Freenove_WS2812_Lib_for_ESP32).h and (ESP32_S2_ISR_Servo)[https://github.com/khoih-prog/ESP32_S2_ISR_Servo]  
+*One of [several ESP32 repositories](https://github.com/blekenbleu/arduino-esp32#readme)*
+
 This library simplifies using an ESP32-S2 module with existing Arduino sketches that use an LED and/or hobby servos.  
 Many ESP32 boards have a WS2812 instead of a simple LED, breaking many Arduino sketches.  
 `esp32s2LED.h` provides a relatively simple way to patch those sketches:
